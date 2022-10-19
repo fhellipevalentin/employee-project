@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
+import { EmployeeEditComponent } from './components/employee-edit/employee-edit.component';
 
 
 

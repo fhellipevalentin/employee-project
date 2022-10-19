@@ -17,7 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
-import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
+import { EmployeeEditComponent } from './components/employee-edit/employee-edit.component';
+import { DepartmentService } from './services/department.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
     MatTableModule,
     MatCardModule
   ],
-  providers: [EmployeeService],
+  providers: [EmployeeService, DepartmentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
