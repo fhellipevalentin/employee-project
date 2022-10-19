@@ -19,12 +19,14 @@ import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { EmployeeEditComponent } from './components/employee-edit/employee-edit.component';
 import { DepartmentService } from './services/department.service';
+import { DepartmentEditComponent } from './components/department-edit/department-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    EmployeeEditComponent
+    EmployeeEditComponent,
+    DepartmentEditComponent
   ],
   imports: [
     BrowserModule,

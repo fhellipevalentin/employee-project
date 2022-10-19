@@ -55,7 +55,7 @@ export class DepartmentService {
   }
 
   deleteDepartmentById(id: any) {
-    return this.http.delete<Department>(`${this.URLBase}/deparments/${id}`, this.authorizationAccess)
+    return this.http.delete<Department>(`${this.URLBase}/departments/${id}`, this.authorizationAccess)
     .pipe(
       retry(1),
       catchError(this.errorHandle.appError)
