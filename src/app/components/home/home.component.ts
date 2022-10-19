@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   departmentList: any = []
 
   columnsEmp : string[] = ['name', 'email', 'phone', 'department', 'options']
-  columnsDep : string[] = ['id', 'categoria']
+  columnsDep : string[] = ['id', 'categoria', 'options2']
 
   ngOnInit(): void {
     this.showData();
@@ -62,6 +62,14 @@ export class HomeComponent implements OnInit {
   deleteData(id:any) {
     if(confirm('Are yout sure you want to delete this task?')) {
       this.employeeService.deleteEmployeeById(id).subscribe(()=>{
+        this.showData()
+      })
+    }
+  }
+
+  deleteDpto(id:any) {
+    if(confirm('Are yout sure you want to delete this task?')) {
+      this.departmentService.deleteDepartmentById(id).subscribe(()=>{
         this.showData()
       })
     }
