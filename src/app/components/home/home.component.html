@@ -37,8 +37,39 @@
                         </span>
                     </td>
                 </ng-container>
-                <tr mat-header-row *matHeaderRowDef="columns"></tr>
-                    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+                <tr mat-header-row *matHeaderRowDef="columnsEmp"></tr>
+                    <tr mat-row *matRowDef="let row; columns: columnsEmp;"></tr>
+            </table>
+        </mat-card>
+    </mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon>list</mat-icon>
+            All the Departments
+        </ng-template>
+        <mat-card class="full-width">
+            <table mat-table [dataSource]="departmentList" class="full-width">
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef>Id</th>
+                    <td mat-cell *matCellDef="let department">{{ department.id }}</td>
+                </ng-container>
+                <ng-container matColumnDef="categoria">
+                    <th mat-header-cell *matHeaderCellDef>Categoria</th>
+                    <td mat-cell *matCellDef="let department">{{ department.categoria }}</td>
+                </ng-container>
+                <ng-container matColumnDef="options2">
+                    <th mat-header-cell *matHeaderCellDef>Options</th>
+                    <td mat-cell *matCellDef="let department">
+                        <span class="edit" routerLink="/department-edit/{{ department.id }}">
+                            <mat-icon>create</mat-icon>
+                        </span>
+                        <span class="delete" (click)="deleteData(department.id)">
+                            <mat-icon>delete</mat-icon>
+                        </span>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="columnsDep"></tr>
+                <tr mat-row *matRowDef="let row; columns: columnsDep;"></tr>
             </table>
         </mat-card>
     </mat-tab>

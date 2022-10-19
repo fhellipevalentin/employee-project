@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Employee } from 'src/app/components/model/employee';
+import { DepartmentService } from 'src/app/services/department.service';
 import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
@@ -11,12 +12,18 @@ import { EmployeeService } from 'src/app/services/employee.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private employeeService: EmployeeService, private formBuilder: FormBuilder, private snackBar: MatSnackBar) { }
+  constructor(private employeeService: EmployeeService, 
+    private formBuilder: FormBuilder, 
+    private snackBar: MatSnackBar,
+    private departmentService: DepartmentService) { }
   
   formulary!: FormGroup;
 
   employeeList: any = []
-  columns : string[] = ['name', 'email', 'phone', 'department', 'options']
+  departmentList: any = []
+
+  columnsEmp : string[] = ['name', 'email', 'phone', 'department', 'options']
+  columnsDep : string[] = ['id', 'categoria']
 
   ngOnInit(): void {
     this.showData();
@@ -32,6 +39,9 @@ export class HomeComponent implements OnInit {
   showData() {
     this.employeeService.listDataEmployee().subscribe((data: {})=> {
       this.employeeList = data
+    })
+    this.departmentService.listDataDepartment().subscribe((data: {})=> {
+      this.departmentList = data
     })
   }
 
