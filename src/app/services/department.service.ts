@@ -22,40 +22,40 @@ export class DepartmentService {
     })
   }
 
-  listDataEmployee(): Observable<Department> {
-    return this.http.get<Department>(`${this.URLBase}/employees`)
+  listDataDepartment(): Observable<Department> {
+    return this.http.get<Department>(`${this.URLBase}/departments`)
     .pipe (
       retry(1),
       catchError(this.errorHandle.appError)
     )
   }
 
-  accessDataEmployeeById(id:any): Observable<Department>{
-    return this.http.get<Department>(`${this.URLBase}/employees/${id}`)
+  accessDataDepartmentById(id:any): Observable<Department>{
+    return this.http.get<Department>(`${this.URLBase}/departments/${id}`)
     .pipe (
       retry(1),
       catchError(this.errorHandle.appError)
     )
   }
 
-  insertEmployee(newData: any): Observable<Department> {
-    return this.http.post<Department>(`${this.URLBase}/employees`, JSON.stringify(newData), this.authorizationAccess)
+  insertDepartment(newData: any): Observable<Department> {
+    return this.http.post<Department>(`${this.URLBase}/departments`, JSON.stringify(newData), this.authorizationAccess)
     .pipe(
       retry(1),
       catchError(this.errorHandle.appError)
     )
   }
 
-  updateEmployee(id: any, newData: any): Observable<Department> {
-    return this.http.put<Department>(`${this.URLBase}/employees/${id}`, JSON.stringify(newData), this.authorizationAccess)
+  updateDepartment(id: any, newData: any): Observable<Department> {
+    return this.http.put<Department>(`${this.URLBase}/departments/${id}`, JSON.stringify(newData), this.authorizationAccess)
     .pipe (
       retry(1),
       catchError(this.errorHandle.appError)
     )
   }
 
-  deleteEmployeeById(id: any) {
-    return this.http.delete<Department>(`${this.URLBase}/employees/${id}`, this.authorizationAccess)
+  deleteDepartmentById(id: any) {
+    return this.http.delete<Department>(`${this.URLBase}/deparments/${id}`, this.authorizationAccess)
     .pipe(
       retry(1),
       catchError(this.errorHandle.appError)
