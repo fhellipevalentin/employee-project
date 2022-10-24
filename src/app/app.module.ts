@@ -20,6 +20,8 @@ import { MatCardModule } from '@angular/material/card';
 import { EmployeeEditComponent } from './components/employee-edit/employee-edit.component';
 import { DepartmentService } from './services/department.service';
 import { DepartmentEditComponent } from './components/department-edit/department-edit.component';
+import {MatSelectModule} from '@angular/material/select';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { DepartmentEditComponent } from './components/department-edit/department
     ReactiveFormsModule,
     MatTabsModule,
     MatTableModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule
   ],
   providers: [EmployeeService, DepartmentService],
   bootstrap: [AppComponent]

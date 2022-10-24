@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Employee } from 'src/app/components/model/employee';
 import { DepartmentService } from 'src/app/services/department.service';
 import { EmployeeService } from 'src/app/services/employee.service';
+import { Department } from '../model/department';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,8 @@ export class HomeComponent implements OnInit {
     private snackBar: MatSnackBar,
     private departmentService: DepartmentService) { }
   
+  selected = 'categoria';
+
   formulary!: FormGroup;
 
   employeeList: any = []
@@ -33,7 +36,6 @@ export class HomeComponent implements OnInit {
       phone: new FormControl('', Validators.required),
       department: new FormControl('', Validators.required)
     })
-
   }
 
   showData() {
@@ -59,6 +61,7 @@ export class HomeComponent implements OnInit {
       console.log(response)
     })
   }
+
   deleteData(id:any) {
     if(confirm('Are yout sure you want to delete this task?')) {
       this.employeeService.deleteEmployeeById(id).subscribe(()=>{

@@ -1,0 +1,13 @@
+table {
+    width: 70%;
+}
+
+.small {
+    width: 15%;
+}
+
+mat-form-field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
