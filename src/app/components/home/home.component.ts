@@ -12,12 +12,13 @@ import { Department } from '../model/department';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  
   constructor(private employeeService: EmployeeService, 
     private formBuilder: FormBuilder, 
     private snackBar: MatSnackBar,
     private departmentService: DepartmentService) { } 
     
+  searchText = '';
   selected = 'categoria';
 
   formulary!: FormGroup;

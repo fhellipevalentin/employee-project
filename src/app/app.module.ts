@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { FormsModule } from '@angular/forms';
+
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -23,6 +25,7 @@ import { DepartmentEditComponent } from './components/department-edit/department
 import {MatSelectModule} from '@angular/material/select';
 import { NgxMaskModule } from 'ngx-mask';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 
@@ -38,7 +41,8 @@ import { NgxMaskModule } from 'ngx-mask';
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-
+    FormsModule,
+    
     MatSnackBarModule,
     MatButtonModule,
     MatToolbarModule,
@@ -49,6 +53,8 @@ import { NgxMaskModule } from 'ngx-mask';
     MatTableModule,
     MatCardModule,
     MatSelectModule,
+
+    Ng2SearchPipeModule,
 
     NgxMaskModule.forRoot()
   ],
