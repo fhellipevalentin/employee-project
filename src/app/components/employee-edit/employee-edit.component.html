@@ -8,28 +8,33 @@
     <mat-card-content>
         <form [formGroup]="formulary" (ngSubmit)="updatingData()">
             <mat-form-field class="full-width" appearance="fill">
-                <mat-label>Name: </mat-label>
                 <input matInput formControlName="name" [(ngModel)]="updateData.name" matInput placeholder="Name of the employee" />
             </mat-form-field>
             <div *ngIf="formulary.get('name')?.errors">
-                <div *ngIf="formulary.get('name')?.errors?.['required'] && !formulary.get('name')?.pristine">Field Name is Required</div>
+                <div *ngIf="formulary.get('name')?.errors?.['required'] && !formulary.get('name')?.pristine">Field Name is <strong>Required</strong></div>
             </div>
             <mat-form-field class="full-width" appearance="fill">
-              <mat-label>Email: </mat-label>
-              <input matInput formControlName="email" [(ngModel)]="updateData.email" matInput placeholder="Email of the employee" />
+              <input matInput formControlName="email" [(ngModel)]="updateData.email" matInput placeholder="Ex. pat@example.com" />
             </mat-form-field>
             <div *ngIf="formulary.get('email')?.errors">
                 <div *ngIf="formulary.get('email')?.errors?.['required'] && !formulary.get('email')?.pristine">Field Email is Required</div>
+                <div *ngIf="formulary.get('email')?.errors?.['email'] && !formulary.get('email')?.pristine"> * <strong>Invalid</strong> Email</div>
             </div>
             <mat-form-field class="full-width" appearance="fill">
-                <mat-label>Phone: </mat-label>
-                <textarea matInput formControlName="phone" [(ngModel)]="updateData.phone" matInput placeholder="Phone" rows="3"></textarea>
+                <input matInput formControlName="phone" [mask]="'(00) 00000-0000'" [(ngModel)]="updateData.phone" matInput placeholder="Phone" rows="3" />
             </mat-form-field>
             <div *ngIf="formulary.get('phone')?.errors">
-                <div *ngIf="formulary.get('phone')?.errors?.['required'] && !formulary.get('phone')?.pristine">Field Phone is Required</div>
+                <div *ngIf="formulary.get('phone')?.errors?.['required'] && !formulary.get('phone')?.pristine">* <strong>Invalid</strong> Phone</div>
             </div>
-            <br>
-            <button mat-stroked-button color="primary">SAVE</button>
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label> {{updateData.department}} </mat-label>
+                <mat-select formControlName="department">
+                    <mat-option>None</mat-option>
+                    <mat-option *ngFor="let item of departmentList" [value]="item.categoria">
+                    {{ item.categoria }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button mat-stroked-button color="primary" [disabled]="!formulary.valid">SAVE</button>
             <button mat-stroked-button color="warn" routerLink="">CANCEL</button>
         </form>
     </mat-card-content>
