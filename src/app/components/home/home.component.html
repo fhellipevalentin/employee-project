@@ -1,6 +1,5 @@
 <mat-toolbar>
-    <mat-icon>assignment_turned_in </mat-icon>
-    Employee List App
+    ACME System LTDA.
 </mat-toolbar>
 <mat-tab-group>
     <mat-tab>
@@ -88,21 +87,23 @@
                         <input formControlName="name" matInput placeholder="Name of the Employee" />
                     </mat-form-field>
                     <div *ngIf="formulary.get('name')?.errors">
-                        <div *ngIf="formulary.get('name')?.errors?.['required'] && !formulary.get('name')?.pristine">*Field Name is Required</div>
+                        <div *ngIf="formulary.get('name')?.errors?.['required'] && !formulary.get('name')?.pristine">*Field Name is <strong>Required</strong></div>
                     </div>
                     <mat-form-field class="full-width" appearance="fill">
                         <mat-label>Email: </mat-label>
-                        <input formControlName="email" matInput placeholder="Email of the Employee" />
+                        <input formControlName="email" matInput placeholder="Ex. pat@example.com" />
                     </mat-form-field>
                     <div *ngIf="formulary.get('email')?.errors">
-                        <div *ngIf="formulary.get('email')?.errors?.['required'] && !formulary.get('email')?.pristine">*Field Email is Required</div>
+                        <div *ngIf="formulary.get('email')?.errors?.['required'] && !formulary.get('email')?.pristine">*Field Email is <strong>Required</strong></div>
+                        <div *ngIf="formulary.get('email')?.errors?.['email'] && !formulary.get('email')?.pristine"> * <strong>Invalid</strong> Email</div>
                     </div>
                     <mat-form-field class="full-width" appearance="fill">
                         <mat-label>Phone: </mat-label>
-                        <input formControlName="phone" matInput placeholder="Phone of the Employee" />
+                        <input matInput formControlName="phone" [mask]="'(00) 00000-0000'"/>
                     </mat-form-field>
                     <div *ngIf="formulary.get('phone')?.errors">
-                        <div *ngIf="formulary.get('phone')?.errors?.['required'] && !formulary.get('phone')?.pristine">*Field Phone is Required</div>
+                        <div *ngIf="formulary.get('phone')?.errors?.['required'] && !formulary.get('phone')?.pristine">*Field Phone is <strong>Required</strong></div>
+                        <div *ngIf="formulary.get('phone')?.errors?.['pattern'] && !formulary.get('phone')?.pristine">*<strong>Invalid</strong> Phone</div>
                     </div>
                     <mat-form-field class="full-width" appearance="fill">
                         <mat-label>Department: </mat-label>
@@ -112,10 +113,30 @@
                             {{ item.categoria }}</mat-option>
                         </mat-select>
                     </mat-form-field>
-                    <div *ngIf="formulary.get('phone')?.errors">
-                        <div *ngIf="formulary.get('phone')?.errors?.['required'] && !formulary.get('phone')?.pristine">*Field Phone is Required</div>
+                    <div *ngIf="formulary.get('department')?.errors">
+                        <div *ngIf="formulary.get('department')?.errors?.['required'] && !formulary.get('department')?.pristine">*Field Department is <strong>Required</strong></div>
                     </div>
-                    <button mat-raised-button color="primary">Add Employee</button>
+                    <button mat-raised-button color="primary" [disabled]="!formulary.valid">Add Employee</button>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon>add</mat-icon>
+            Create a New Department
+        </ng-template>
+        <mat-card>
+            <mat-card-content>
+                <form [formGroup]="formulary2" (ngSubmit)="submit2()">
+                    <mat-form-field class="full-width" appearance="fill">
+                        <mat-label>Category: </mat-label>
+                        <input formControlName="category" matInput placeholder="Name of the Department" />
+                    </mat-form-field>
+                    <div *ngIf="formulary.get('category')?.errors">
+                        <div *ngIf="formulary.get('category')?.errors?.['required'] && !formulary.get('category')?.pristine">*Field Category is <strong>Required</strong></div>
+                    </div>
+                    <button mat-raised-button color="primary" [disabled]="!formulary2.valid">Add Department</button>
                 </form>
             </mat-card-content>
         </mat-card>

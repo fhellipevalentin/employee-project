@@ -21,6 +21,9 @@ import { EmployeeEditComponent } from './components/employee-edit/employee-edit.
 import { DepartmentService } from './services/department.service';
 import { DepartmentEditComponent } from './components/department-edit/department-edit.component';
 import {MatSelectModule} from '@angular/material/select';
+import { NgxMaskModule } from 'ngx-mask';
+
+
 
 
 @NgModule({
@@ -45,7 +48,9 @@ import {MatSelectModule} from '@angular/material/select';
     MatTabsModule,
     MatTableModule,
     MatCardModule,
-    MatSelectModule
+    MatSelectModule,
+
+    NgxMaskModule.forRoot()
   ],
   providers: [EmployeeService, DepartmentService],
   bootstrap: [AppComponent]
