@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   employeeList: any = []
   departmentList: any = []
 
-  columnsEmp : string[] = ['name', 'email', 'phone', 'department', 'options']
+  columnsEmp : string[] = ['name', 'email', 'phone', 'department', 'instant', 'options']
   columnsDep : string[] = ['id', 'categoria', 'options2']
 
   ngOnInit(): void {
@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit {
   submit() {
     const formValues = this.formulary.value
     const employee: Employee = new Employee(formValues.name, formValues.email, 
-      formValues.phone, formValues.department);
+      formValues.phone, formValues.department, formValues.instant);
     this.employeeService.insertEmployee(employee).subscribe(response => {
       let list: Employee[] = [...this.employeeList, response]
         this.employeeList = list
@@ -81,7 +81,7 @@ export class HomeComponent implements OnInit {
   }
 
   deleteData(id:any) {
-    if(confirm('Are yout sure you want to delete this task?')) {
+    if(confirm('Are yout sure you want to delete this employee?')) {
       this.employeeService.deleteEmployeeById(id).subscribe(()=>{
         this.showData()
       })
@@ -92,7 +92,7 @@ export class HomeComponent implements OnInit {
   }
 
   deleteDpto(id:any) {
-    if(confirm('Are yout sure you want to delete this task?')) {
+    if(confirm('Are yout sure you want to delete this department?')) {
       this.departmentService.deleteDepartmentById(id).subscribe(()=>{
         this.showData()
       })

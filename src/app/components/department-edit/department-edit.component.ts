@@ -34,7 +34,7 @@ export class DepartmentEditComponent implements OnInit {
   }
   
   updatingData() {
-    if (confirm('Are you want to edit the task?')) {
+    if (confirm('Are you want to edit the department?')) {
       this.departmentService.updateDepartment(this.id, this.updateData).subscribe(()=>{
         this.route.navigate(['/home'])
       })

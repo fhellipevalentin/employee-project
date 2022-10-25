@@ -45,7 +45,7 @@ export class EmployeeEditComponent implements OnInit {
   }
   
   updatingData() {
-    if (confirm('Are you want to edit the task?')) {
+    if (confirm('Are you want to edit the employee?')) {
       this.employeeService.updateEmployee(this.id, this.updateData).subscribe(()=>{
         this.route.navigate(['/home'])
       })
