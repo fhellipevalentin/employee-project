@@ -5,6 +5,10 @@ import { Employee } from 'src/app/components/model/employee';
 import { DepartmentService } from 'src/app/services/department.service';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { Department } from '../model/department';
+import { MatDialog } from '@angular/material/dialog';
+import { EmployeeDetailsComponent } from '../employee-details/employee-details.component';
+import { DeleteEmployeeComponent } from '../system-dialogs/delete-employee/delete-employee.component';
+import { DeleteDepartmentComponent } from '../system-dialogs/delete-department/delete-department.component';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +20,8 @@ export class HomeComponent implements OnInit {
   constructor(private employeeService: EmployeeService, 
     private formBuilder: FormBuilder, 
     private snackBar: MatSnackBar,
-    private departmentService: DepartmentService) { } 
+    private departmentService: DepartmentService,
+    public dialog: MatDialog) { } 
     
   searchText = '';
   selected = 'categoria';
@@ -64,6 +69,7 @@ export class HomeComponent implements OnInit {
       })
       this.formulary.reset();
       console.log(response)
+      location.reload();
     })
   }
   submit2() {
@@ -76,30 +82,30 @@ export class HomeComponent implements OnInit {
         duration: 2000
       })
       this.formulary2.reset();
+      location.reload();
       console.log(response)
     })
   }
 
-  deleteData(id:any) {
-    if(confirm('Are yout sure you want to delete this employee?')) {
-      this.employeeService.deleteEmployeeById(id).subscribe(()=>{
-        this.showData()
-      })
-      this.snackBar.open('The Employee has been deleted', 'Success!', {
-        duration: 2000
-      })
-    }
+  openDialogDetails(employee: Employee) {
+    this.dialog.open(EmployeeDetailsComponent, {
+      width: '600px',
+      height: '450px',
+      data: employee
+    });
   }
 
-  deleteDpto(id:any) {
-    if(confirm('Are yout sure you want to delete this department?')) {
-      this.departmentService.deleteDepartmentById(id).subscribe(()=>{
-        this.showData()
-      })
-      this.snackBar.open('The Department has been deleted', 'Success!', {
-        duration: 2000
-      })
-    }
+  openDialogDeleteEmployee(employee: Employee) {
+    this.dialog.open(DeleteEmployeeComponent, {
+      width: '300px',
+      data: employee,
+    });
   }
 
+  openDialogDeleteDepartment(department: Department) {
+    this.dialog.open(DeleteDepartmentComponent, {
+      width: '300px',
+      data: department,
+    });
+  }
 }

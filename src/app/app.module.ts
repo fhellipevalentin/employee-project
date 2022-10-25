@@ -22,19 +22,28 @@ import { MatCardModule } from '@angular/material/card';
 import { EmployeeEditComponent } from './components/employee-edit/employee-edit.component';
 import { DepartmentService } from './services/department.service';
 import { DepartmentEditComponent } from './components/department-edit/department-edit.component';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { NgxMaskModule } from 'ngx-mask';
+import { MatListModule } from '@angular/material/list';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { EmployeeDetailsComponent } from './components/employee-details/employee-details.component';
+import { DeleteEmployeeComponent } from './components/system-dialogs/delete-employee/delete-employee.component';
+import { DeleteDepartmentComponent } from './components/system-dialogs/delete-department/delete-department.component';
 
 
 
 @NgModule({
   declarations: [
+
     AppComponent,
     HomeComponent,
     EmployeeEditComponent,
-    DepartmentEditComponent
+    DepartmentEditComponent,
+    EmployeeDetailsComponent,
+    DeleteEmployeeComponent,
+    DeleteDepartmentComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +62,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     MatTableModule,
     MatCardModule,
     MatSelectModule,
-
+    MatDialogModule,
+    MatListModule,
+    
     Ng2SearchPipeModule,
 
     NgxMaskModule.forRoot()
